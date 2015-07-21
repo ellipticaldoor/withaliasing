@@ -1,0 +1,25 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}withaliasing{% endblock %}</title>
+	<meta name="description" content="withaliasing - A nice place for gaming devs.">
+	<meta name="keywords" content="withaliasing, games, development, jam, indie">
+	<meta name="theme-color" content="#FFFFFF">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="{% static "css/open_sans.css" %}" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" charset="utf-8">
+
+	{% block js_head %}{% endblock %}
+</head>
+<body>
+	<div class="app">
+		{% block content %}{% endblock %}
+	</div>
+
+	{% block js %}{% endblock %}
+</body>
+</html>
