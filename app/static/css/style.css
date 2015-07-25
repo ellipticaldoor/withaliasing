@@ -1,9 +1,124 @@
 /* general
 __________________________________________________________________________ */
 
-*, *:before, *:after {
-	-moz-box-sizing: border-box;
+*,
+*:before,
+*:after
+{
 	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
 	margin: 0;
+}
+
+.noselect
+{
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+
+	-webkit-touch-callout: none;
+	 -khtml-user-select: none;
+}
+
+
+/* typography
+__________________________________________________________________________ */
+
+body,
+textarea,
+input
+{
+	font-family: 'Open Sans';
+	font-size: 115%;
+
+	color: #2b1342;
+	background-color: #fff;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+*::selection
+{
+	background: rgba(69, 223, 233, 0.37);
+}
+
+
+a
+{
+	color: #f4449e;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+a:visited { color: #9744f4; }
+
+p
+{
+	margin: .5em .1em;
+}
+
+
+
+/* layout
+__________________________________________________________________________ */
+
+.container
+{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	padding: 0.4em;
+}
+
+.card
+{
+	width: 100%;
+	max-width: 750px;
+
+	margin: .5em auto;
+	padding: 1em;
+
+	border: 1px solid #afcacc;
+}
+
+
+/* header
+__________________________________________________________________________ */
+
+#header
+{
+	width: 100vw;
+	height: 6.5em;
+	font-size: 120%;
+
+	background-color: #fff;
+}
+
+#header div
+{
+	line-height: 4.5em;
+
+	width: 100%;
+	height: 4.5em;
+
+	text-align: center;
+
+	color: #3bbdc6;
+}
+
+nav
+{
+	width: 100%;
+	height: 2em;
+
+	background-color: #45dfe9;
+	border-bottom: 2px solid #3bbdc6;
 }

@@ -5,5 +5,5 @@ from blog import views
 
 urlpatterns = patterns(
 	'',
-	url(r'^$', views.FrontView.as_view(), name='front', kwargs={'tab':'top'}),
+	url(r'^$', views.HomeView.as_view(), name='home'),
 )

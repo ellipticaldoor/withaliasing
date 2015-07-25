@@ -10,15 +10,20 @@
 	<meta name="theme-color" content="#FFFFFF">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="{% static "css/open_sans.css" %}" type="text/css" charset="utf-8">
-	<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="{% static 'css/open_sans.css' %}" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" charset="utf-8">
 
 	{% block js_head %}{% endblock %}
 </head>
 <body>
-	<div class="app">
+	<section id="header" class="noselect">
+		<div><h1>with aliasing</h1></div>
+		<nav></nav>
+	</section>
+
+	<section id="content" class="container">
 		{% block content %}{% endblock %}
-	</div>
+	</section>
 
 	{% block js %}{% endblock %}
 </body>
