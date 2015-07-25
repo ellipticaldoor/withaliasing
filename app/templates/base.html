@@ -19,14 +19,27 @@
 	<section id="header" class="noselect">
 		<div><h1>with aliasing</h1></div>
 		<nav>
-			<a href="#"><h5>home</h5></a>
+			<a href="#"><h5>blog</h5></a>
 			<a href="#"><h5>howtos</h5></a>
 			<a href="#"><h5>games</h5></a>
 		</nav>
 	</section>
 
-	<section id="content" class="container">
+	<section id="content">
 		{% block content %}{% endblock %}
+	</section>
+
+	<section id="info">
+		<div class="card">
+			<h1 class="title"><a href="#">archive</a></h1>
+			<div class="card_content">
+				<p><a href="http://windosill.com/online/fdsssfdfds">january</a></p>
+				<p><a href="http://windosill.com/online/fdsssfdfds">february</a></p>
+				<p><a href="http://windosill.com/online/fdsssfdfds">march</a></p>
+				<p><a href="http://windosill.com/online/fdsssfdfds">april</a></p>
+				<p><a href="http://windosill.com/online/fdsssfdfds">may</a></p>
+			</div>
+		</div>
 	</section>
 
 	{% block js %}{% endblock %}
