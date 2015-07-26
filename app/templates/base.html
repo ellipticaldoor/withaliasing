@@ -28,22 +28,13 @@
 		</nav>
 	</section>
 
+	{% block tab %}{% endblock %}
+
 	<section id="content">
 		{% block content %}{% endblock %}
 	</section>
 
-	<section id="info">
-		<div class="card">
-			<h1 class="title"><a href="#">archive</a></h1>
-			<div class="card_content">
-				<p><a href="http://windosill.com/online/fdsssfdfds">january</a></p>
-				<p><a href="http://windosill.com/online/fdsssfdfds">february</a></p>
-				<p><a href="http://windosill.com/online/fdsssfdfds">march</a></p>
-				<p><a href="http://windosill.com/online/fdsssfdfds">april</a></p>
-				<p><a href="http://windosill.com/online/fdsssfdfds">may</a></p>
-			</div>
-		</div>
-	</section>
+	{% block info %}{% endblock %}
 
 	{% block js %}{% endblock %}
 </body>

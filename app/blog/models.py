@@ -25,8 +25,8 @@ class EntryQuerySet(models.QuerySet):
 	def by_category(self, category):
 		return self.filter(category=category, status='published')
 
-	def by_entry(self, entry_type, slug):
-		return self.filter(entry_type=entry_type, slug=slug, status='published')
+	def by_entry(self, category, slug):
+		return self.filter(category=category, slug=slug, status='published')
 
 
 class Entry(models.Model):

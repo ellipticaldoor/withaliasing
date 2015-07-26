@@ -21,4 +21,4 @@ class EntryView(DetailView):
 	template_name = 'blog/entry.html'
 
 	def get_queryset(self):
-		return Entry.objects.by_entry(self.kwargs['entry_type'], self.kwargs['slug'])
+		return Entry.objects.by_entry(self.kwargs['category'], self.kwargs['slug'])

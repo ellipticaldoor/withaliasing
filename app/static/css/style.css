@@ -46,7 +46,6 @@ input
 *::selection { background: #23faf2 }
 *::-moz-selection { background: #23faf2 }
 
-
 a
 {
 	text-decoration: none;
@@ -84,39 +83,89 @@ li a { display: inline-block; }
 	padding: 1.2em;
 }
 
-.card_info {
-	border-top: 1px solid #23faf2;
+.card_info
+{
 	margin-top: 1em;
+
 	color: #23faf2;
+	border-top: 1px solid #23faf2;
 }
 
 .card_info li { padding: 0 .4em; }
+
 .card_info h5 { display: inline-block; }
 
 .card_date { color: #867a91; }
 
-#content
+#tab
 {
-	float: left;
+	overflow: auto;
+
+	width: 100vw;
 	padding: 0 1em;
 
-	width: calc(100% - 20em);
+	text-align: center;
 }
+
+#tab div
+{
+	float: left;
+
+	width: 50%;
+	padding: 1em;
+
+	cursor: pointer;
+
+	color: #f4449e;
+	border: .5em solid #fafafa;
+}
+
+#tab div:hover { text-decoration: underline; }
+
+.tab_selected
+{
+	text-decoration: underline;
+
+	border: .5em solid #23faf2 !important;
+	color: #9744f4 !important;
+}
+
+#content { width: 100vw; }
 
 #info
 {
-	float: left;
-	padding: 0.5em 1.6em;
-	width: 20em;
+	display: none;
+
+	width: 100vw;
 }
 
-#info .card
+@media (min-width: 900px)
 {
-	font-size: 85%;
+	#tab { display: none; }
 
-	border: 0;
-	background-color: #fafafa;
-	border: .5em solid #23faf2
+	#content
+	{
+		float: left;
+
+		width: 70vw;
+	}
+
+	#info
+	{
+		display: block;
+		float: left;
+
+		width: 30vw;
+	}
+
+	#info .card
+	{
+		font-size: 85%;
+
+		max-width: 350px;
+
+		border: .5em solid #23faf2;
+	}
 }
 
 
@@ -138,7 +187,7 @@ __________________________________________________________________________ */
 	background-position: center;
 	background-size: cover;
 
-	margin-bottom: .6em;
+	margin-bottom: 1em;
 }
 
 #header div
@@ -170,8 +219,9 @@ nav
 	background-color: rgba(52, 8, 57, .4);
 }
 
-nav a {
-	color: #fafafa !important;
-
+nav a
+{
 	padding: 0 1em;
+
+	color: #fafafa !important;
 }
