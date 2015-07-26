@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% block entry %}
+	<div class="card">
+		<h1 class="title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+		<div class="card_content">{{ object.body_html|safe }}</div>
+	</div>
+{% endblock %}
+
+{% endblock %}

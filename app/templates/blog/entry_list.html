@@ -1,0 +1,9 @@
+{% extends 'blog/entry.html' %}
+
+{% block content %}
+
+{% for object in object_list %}
+	{% block entry %}{{ block.super }}{% endblock %}
+{% endfor %}
+
+{% endblock %}

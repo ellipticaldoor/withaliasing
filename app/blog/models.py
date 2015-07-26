@@ -5,40 +5,75 @@ from user.models import User
 from core.core import _createId
 from core.video_embed import CustomVideoExtension
 
-from django_resized import ResizedImageField
 from markdown import markdown
 
 
-class Post(models.Model):
-	def get_image(instance, filename):
-		if not hasattr(instance.postid, 'decode'): postid = instance.postid
-		else: postid = instance.postid.decode('utf-8')
-		return 'post/%s.png' % (postid)
+class Category(models.Model):
+	slug = models.SlugField(primary_key=True, max_length=40)
 
-	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
-	user = models.ForeignKey(User, related_name='posts')
-	sub = models.ForeignKey(Sub, related_name='posts')
-	title = models.CharField(max_length=100)
-	slug = models.SlugField(max_length=100)
-	body = models.TextField(max_length=10000)
+	class Meta:
+		verbose_name_plural = 'Categories'
+		ordering = ['slug']
+
+	def __str__(self): return self.slug
+
+
+class EntryQuerySet(models.QuerySet):
+	def published(self):
+		return self.filter(status='published')
+
+	def by_category(self, category):
+		return self.filter(category=category, status='published')
+
+	def by_type(self, entry_type):
+		return self.filter(slug=slug, status='published')
+
+	def by_entry(self, entry_type, slug):
+		return self.filter(entry_type=entry_type, slug=slug, status='published')
+
+
+class Entry(models.Model):
+	STATUS_CHOICES = (
+		('draft', 'draft'),
+		('published', 'published'),
+	)
+
+	ENTRY_TYPE_CHOICES = (
+		('post', 'post'),
+		('howto', 'howto'),
+		('game', 'game'),
+	)
+
+	def get_image(instance, filename):
+		if not hasattr(instance.entryid, 'decode'): entryid = instance.entryid
+		else: entryid = instance.entryid.decode('utf-8')
+		return 'entry/%s.png' % (entryid)
+
+	entryid = models.CharField(primary_key=True, max_length=16, default=_createId)
+	user = models.ForeignKey(User, related_name='entries')
+	title = models.CharField(max_length=100, unique=True)
+	slug = models.SlugField(max_length=100, unique=True)
+	body = models.TextField()
 	body_html = models.TextField(blank=True, null=True)
-	image = ResizedImageField(size=[950, 950], quality=90, upload_to=get_image, blank=True, null=True)
-	draft = models.BooleanField(default=False)
+	image = models.ImageField(upload_to=get_image, blank=True, null=True)
+	entry_type = models.CharField(db_index=True, max_length=10, choices=ENTRY_TYPE_CHOICES, default='post')
+	status = models.CharField(db_index=True, max_length=10, choices=STATUS_CHOICES, default='draft')
+	category = models.ForeignKey(Category, related_name='categories')
 	created = models.DateTimeField(auto_now_add=True)
 
-	objects = PostQuerySet.as_manager()
+	objects = EntryQuerySet.as_manager()
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title.replace(' ', '_'))
-		if not self.slug: self.slug = '_'
-		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension())
-		super(Post, self).save(*args, **kwargs)
+		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
+		super(Entry, self).save(*args, **kwargs)
 
+	@models.permalink
 	def get_absolute_url(self):
-		if not hasattr(self.pk, 'decode'): postid = self.pk
-		else: postid = self.pk.decode('utf-8')
-		return '/post/%s/%s/' % (postid, self.slug)
-
-	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
+		return ('entry', [self.entry_type, self.slug,])
 
 	def __str__(self): return self.title
+
+	class Meta:
+		verbose_name_plural = 'Entries'
+		ordering = ['-created']
