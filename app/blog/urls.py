@@ -5,5 +5,5 @@ from blog import views
 
 urlpatterns = patterns(
 	'',
-	url(r'^$', views.HomeView.as_view(), name='home'),
+	url(r'^$', views.BlogView.as_view(), name='blog'),
 )
