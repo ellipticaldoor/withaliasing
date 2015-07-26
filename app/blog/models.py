@@ -25,9 +25,6 @@ class EntryQuerySet(models.QuerySet):
 	def by_category(self, category):
 		return self.filter(category=category, status='published')
 
-	def by_type(self, entry_type):
-		return self.filter(slug=slug, status='published')
-
 	def by_entry(self, entry_type, slug):
 		return self.filter(entry_type=entry_type, slug=slug, status='published')
 
@@ -36,12 +33,6 @@ class Entry(models.Model):
 	STATUS_CHOICES = (
 		('draft', 'draft'),
 		('published', 'published'),
-	)
-
-	ENTRY_TYPE_CHOICES = (
-		('post', 'post'),
-		('howto', 'howto'),
-		('game', 'game'),
 	)
 
 	def get_image(instance, filename):
@@ -56,7 +47,6 @@ class Entry(models.Model):
 	body = models.TextField()
 	body_html = models.TextField(blank=True, null=True)
 	image = models.ImageField(upload_to=get_image, blank=True, null=True)
-	entry_type = models.CharField(db_index=True, max_length=10, choices=ENTRY_TYPE_CHOICES, default='post')
 	status = models.CharField(db_index=True, max_length=10, choices=STATUS_CHOICES, default='draft')
 	category = models.ForeignKey(Category, related_name='categories')
 	created = models.DateTimeField(auto_now_add=True)
@@ -70,7 +60,7 @@ class Entry(models.Model):
 
 	@models.permalink
 	def get_absolute_url(self):
-		return ('entry', [self.entry_type, self.slug,])
+		return ('entry', [self.category, self.slug,])
 
 	def __str__(self): return self.title
 

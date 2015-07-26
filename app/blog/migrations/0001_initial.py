@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('slug', models.SlugField(serialize=False, primary_key=True, max_length=40)),
+                ('slug', models.SlugField(primary_key=True, max_length=40, serialize=False)),
             ],
             options={
                 'verbose_name_plural': 'Categories',
@@ -25,16 +25,25 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='CategoryToEntry',
+            fields=[
+                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
+                ('category', models.ForeignKey(to='blog.Category')),
+            ],
+            options={
+                'ordering': ['entry'],
+            },
+        ),
+        migrations.CreateModel(
             name='Entry',
             fields=[
-                ('entryid', models.CharField(default=core.core._createId, serialize=False, primary_key=True, max_length=16)),
-                ('title', models.CharField(unique=True, max_length=100)),
-                ('slug', models.SlugField(unique=True, max_length=100)),
+                ('entryid', models.CharField(default=core.core._createId, primary_key=True, max_length=16, serialize=False)),
+                ('title', models.CharField(max_length=100, unique=True)),
+                ('slug', models.SlugField(max_length=100, unique=True)),
                 ('body', models.TextField()),
-                ('body_html', models.TextField(null=True, blank=True)),
-                ('image', models.ImageField(upload_to=blog.models.Entry.get_image, null=True, blank=True)),
-                ('entry_type', models.CharField(max_length=10, default='post', db_index=True, choices=[('post', 'post'), ('howto', 'howto'), ('game', 'game')])),
-                ('status', models.CharField(max_length=10, default='draft', db_index=True, choices=[('draft', 'draft'), ('published', 'published')])),
+                ('body_html', models.TextField(blank=True, null=True)),
+                ('image', models.ImageField(blank=True, upload_to=blog.models.Entry.get_image, null=True)),
+                ('status', models.CharField(default='draft', max_length=10, choices=[('draft', 'draft'), ('published', 'published')], db_index=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('category', models.ForeignKey(related_name='categories', to='blog.Category')),
                 ('user', models.ForeignKey(related_name='entries', to=settings.AUTH_USER_MODEL)),
@@ -43,5 +52,10 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Entries',
                 'ordering': ['-created'],
             },
+        ),
+        migrations.AddField(
+            model_name='categorytoentry',
+            name='entry',
+            field=models.ForeignKey(to='blog.Entry'),
         ),
     ]

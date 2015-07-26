@@ -8,5 +8,6 @@ urlpatterns = patterns(
 	'',
 	url(r'^$', views.BlogView.as_view(), name='blog'),
 
-	url(r'^(?P<entry_type>[-\w]+)/(?P<slug>.*)/$', views.EntryView.as_view(), name='entry'),
+	url(r'^(?P<category>[-\w]+)/$', views.CategoryView.as_view(), name='category'),
+	url(r'^(?P<category>[-\w]+)/(?P<slug>.*)/$', views.EntryView.as_view(), name='entry'),
 )
