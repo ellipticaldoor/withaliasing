@@ -64,15 +64,36 @@ p { margin: .5em .1em; }
 /* layout
 __________________________________________________________________________ */
 
+ul
+{
+	margin: 0;
+	padding: 0;
+
+	list-style-type: none;
+}
+
+li { display: inline; }
+
+li a { display: inline-block; }
+
 .card
 {
 	width: 100%;
 	max-width: 750px;
-	margin: 1em auto;
-	padding: 1em;
-
-
+	margin: 0 auto;
+	padding: 1.2em;
 }
+
+.card_info {
+	border-top: 1px solid #23faf2;
+	margin-top: 1em;
+	color: #23faf2;
+}
+
+.card_info li { padding: 0 .4em; }
+.card_info h5 { display: inline-block; }
+
+.card_date { color: #867a91; }
 
 #content
 {
@@ -116,6 +137,8 @@ __________________________________________________________________________ */
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+
+	margin-bottom: .6em;
 }
 
 #header div
@@ -136,7 +159,7 @@ __________________________________________________________________________ */
 
 nav
 {
-	line-height: 2em;
+	line-height: 1.9em;
 
 	overflow: auto;
 
@@ -147,21 +170,8 @@ nav
 	background-color: rgba(52, 8, 57, .4);
 }
 
-nav ul
-{
-	margin: 0;
-	padding: 0;
-
-	list-style-type: none;
-}
-
-nav li { display: inline; }
-
-nav a
-{
-	display: inline-block;
+nav a {
+	color: #fafafa !important;
 
 	padding: 0 1em;
-
-	color: #fafafa !important;
 }

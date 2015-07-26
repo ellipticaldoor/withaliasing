@@ -4,8 +4,13 @@
 
 {% block entry %}
 	<div class="card">
-		<h1 class="title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+		<h1 class="card_title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
 		<div class="card_content">{{ object.body_html|safe }}</div>
+		<ul class="card_info">
+			<li><a href="/"><h5>{{ object.category }}</h5></a></li>
+			<li><h5>/</h5></li>
+			<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
+		</ul>
 	</div>
 {% endblock %}
 
