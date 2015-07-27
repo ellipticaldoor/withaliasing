@@ -18,7 +18,7 @@
 {% block info %}
 	<section id="info">
 		<div class="card">
-			<h1 class="title"><a href="#">archive</a></h1>
+			<h1 class="title">archive</h1>
 			<div class="card_content">
 				<p><a href="http://windosill.com/online/fdsssfdfds">january</a></p>
 				<p><a href="http://windosill.com/online/fdsssfdfds">february</a></p>
@@ -33,29 +33,25 @@
 {% block js %}
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
-		var tab_content = document.getElementById('tab_content');
-		var tab_info = document.getElementById('tab_info');
+		// Tab manager initialiazation
+		tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
 
-		var content_section = document.getElementById('content');
-		var info_section = document.getElementById('info');
 
-		// Improve UI behaviour when resizeing the app on desktop
-
-		tab_content.addEventListener('click', function() {
-			tab_content.classList.add('tab_selected');
-			tab_info.classList.remove('tab_selected');
-
-			content_section.style.display = 'block';
-			info_section.style.display = 'none';
-		});
-
-		tab_info.addEventListener('click', function() {
-			tab_content.classList.remove('tab_selected');
-			tab_info.classList.add('tab_selected');
-
-			content_section.style.display = 'none';
-			info_section.style.display = 'block';
-		});
+		// tab_content.addEventListener('click', function() {
+		// 	tab_content.classList.add('tab_selected');
+		// 	tab_info.classList.remove('tab_selected');
+		//
+		// 	content_section.style.display = 'block';
+		// 	info_section.style.display = 'none';
+		// });
+		//
+		// tab_info.addEventListener('click', function() {
+		// 	tab_content.classList.remove('tab_selected');
+		// 	tab_info.classList.add('tab_selected');
+		//
+		// 	content_section.style.display = 'none';
+		// 	info_section.style.display = 'block';
+		// });
 	});
 </script>
 {% endblock %}
