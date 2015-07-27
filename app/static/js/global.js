@@ -5,6 +5,8 @@ __________________________________________________________________________ */
 
 var tabUI = {
 	currentTab: 'content',
+	showMode: 'mobile',
+	windowWidth: window.innerWidth,
 
 	contentSection: undefined,
 	infoSection: undefined,
@@ -23,21 +25,55 @@ var tabUI = {
 	},
 
 	setClickEvents: function() {
+		var that = this;
 		this.leftTab.addEventListener('click', function() {
-			tabUI.leftTab.classList.add('tab_selected');
-			tabUI.rightTab.classList.remove('tab_selected');
-
-			tabUI.contentSection.style.display = 'block';
-			tabUI.infoSection.style.display = 'none';
+			that.currentTab = 'content';
+			that.setSectionsVisibility();
 		});
 
+		var that = this;
 		this.rightTab.addEventListener('click', function() {
-			tabUI.leftTab.classList.remove('tab_selected');
-			tabUI.rightTab.classList.add('tab_selected');
-
-			tabUI.contentSection.style.display = 'none';
-			tabUI.infoSection.style.display = 'block';
+			that.currentTab = 'info';
+			that.setSectionsVisibility();
 		});
+	},
+
+	setResizeWindowEvent: function() {
+		var that = this;
+		window.addEventListener('resize', function(event){
+			that.windowWidth = window.innerWidth;
+			that.setShowMode();
+		});
+	},
+
+	setShowMode: function() {
+		if (this.windowWidth < 900) { this.showMode = 'mobile'; }
+		else { this.showMode = 'desktop'; }
+
+		this.setSectionsVisibility();
+	},
+
+	setSectionsVisibility: function() {
+		if ( this.showMode == 'mobile' ) {
+			if ( this.currentTab == 'content' ) {
+				this.leftTab.classList.add('tab_selected');
+				this.rightTab.classList.remove('tab_selected');
+
+				this.contentSection.style.display = 'block';
+				this.infoSection.style.display = 'none';
+			}
+			else if ( this.currentTab == 'info' ) {
+				this.leftTab.classList.remove('tab_selected');
+				this.rightTab.classList.add('tab_selected');
+
+				this.contentSection.style.display = 'none';
+				this.infoSection.style.display = 'block';
+			}
+		}
+		else if ( this.showMode == 'desktop' ) {
+			this.contentSection.style.display = 'block';
+			this.infoSection.style.display = 'block';
+		}
 	},
 
 	initTabs: function(contentSectionId, infoSectionId, leftTabId, rightTabId) {
@@ -45,6 +81,7 @@ var tabUI = {
 		this.setTabs(leftTabId, rightTabId);
 
 		this.setClickEvents();
+		this.setResizeWindowEvent();
 	},
 }
 

@@ -31,27 +31,10 @@
 {% endblock %}
 
 {% block js %}
-<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function() {
-		// Tab manager initialiazation
-		tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
-
-
-		// tab_content.addEventListener('click', function() {
-		// 	tab_content.classList.add('tab_selected');
-		// 	tab_info.classList.remove('tab_selected');
-		//
-		// 	content_section.style.display = 'block';
-		// 	info_section.style.display = 'none';
-		// });
-		//
-		// tab_info.addEventListener('click', function() {
-		// 	tab_content.classList.remove('tab_selected');
-		// 	tab_info.classList.add('tab_selected');
-		//
-		// 	content_section.style.display = 'none';
-		// 	info_section.style.display = 'block';
-		// });
-	});
-</script>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+			// Tab manager initialiazation
+			tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
+		});
+	</script>
 {% endblock %}
