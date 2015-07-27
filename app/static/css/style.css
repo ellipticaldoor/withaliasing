@@ -235,22 +235,22 @@ __________________________________________________________________________ */
 	{
 		float: left;
 
-		width: 50%;
-		padding: 2em 2em 0em 2em;
+		max-width: 50%;
+		padding: 2em 2em 0 2em;
 	}
 
 
 	.content_with_card_game
 	{
-		display: table;
+		display: table !important;
 
-		width: auto !important;
+		max-width: 2080px;
 		margin: 0 auto;
 		padding: 0 1em 1em 1em;
 	}
 }
 
-.card_title { margin-bottom: .3em; }
+.card_title { margin-bottom: .5em; }
 
 .card_info
 {
