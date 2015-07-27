@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<section id="content">
+		{% for object in object_list %}
+			<div class="card">
+				<h1 class="card_title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+			</div>
+		{% endfor %}
+	</section>
+{% endblock %}

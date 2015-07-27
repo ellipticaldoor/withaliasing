@@ -8,11 +8,13 @@
 {% endblock %}
 
 {% block content %}
-	{% for object in object_list %}
-		{% block entry %}
-			{{ block.super }}
-		{% endblock %}
-	{% endfor %}
+	<section id="content" class="content_with_list">
+		{% for object in object_list %}
+			{% block entry %}
+				{{ block.super }}
+			{% endblock %}
+		{% endfor %}
+	</section>
 {% endblock %}
 
 {% block info %}

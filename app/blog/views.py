@@ -9,6 +9,11 @@ class BlogView(ListView):
 	paginate_by = 5
 
 
+class GamesView(ListView):
+	template_name = 'blog/category/games.html'
+	queryset = Entry.objects.by_category('games')
+
+
 class CategoryView(ListView):
 	template_name = 'blog/entry_list.html'
 	paginate_by = 5

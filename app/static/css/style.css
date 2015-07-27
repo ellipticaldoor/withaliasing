@@ -145,11 +145,11 @@ li a { display: inline-block; }
 {
 	#tab { display: none; }
 
-	#content
+	.content_with_list
 	{
 		float: left;
 
-		width: 70vw;
+		width: 70vw !important;
 		border-right: 1px solid #23faf2;
 	}
 
