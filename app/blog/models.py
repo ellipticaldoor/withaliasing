@@ -15,7 +15,8 @@ class Category(models.Model):
 		verbose_name_plural = 'Categories'
 		ordering = ['slug']
 
-	def __str__(self): return self.slug
+	def __str__(self):
+		return self.slug
 
 
 class EntryQuerySet(models.QuerySet):
@@ -38,7 +39,7 @@ class Entry(models.Model):
 	def get_image(instance, filename):
 		if not hasattr(instance.entryid, 'decode'): entryid = instance.entryid
 		else: entryid = instance.entryid.decode('utf-8')
-		return 'entry/%s.png' % (entryid)
+		return 'entry/%s.jpg' % (entryid)
 
 	entryid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	user = models.ForeignKey(User, related_name='entries')
@@ -62,7 +63,11 @@ class Entry(models.Model):
 	def get_absolute_url(self):
 		return ('entry', [self.category, self.slug,])
 
-	def __str__(self): return self.title
+	def get_image_url(self):
+		return '/m/%s' % (self.image)
+
+	def __str__(self):
+		return self.title
 
 	class Meta:
 		verbose_name_plural = 'Entries'

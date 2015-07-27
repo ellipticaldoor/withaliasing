@@ -4,7 +4,12 @@
 	<section id="content">
 		{% block entry %}
 			<div class="card">
-				<h1 class="card_title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+				<a href="{{ object.get_absolute_url }}">
+					<h1 class="card_title">{{ object.title }}</h1>
+					{% if object.image %}
+						<img src="{{ object.get_image_url }}" alt="{{ object.title }}" />
+					{% endif %}
+				</a>
 				<div class="card_content">{{ object.body_html|safe }}</div>
 				<ul class="card_info">
 					<li><a href="/"><h5>{{ object.category }}</h5></a></li>
