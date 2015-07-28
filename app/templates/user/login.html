@@ -1,0 +1,21 @@
+{% load static from staticfiles %}
+
+{% if not user.is_authenticated %}
+	<div id="auth_form_container">
+		<img src="{% static "img/logo.png" %}">
+		{% if next %}
+			<form id="auth_form" action="/login/?next={{next}}" method="post" >
+		{%else%}
+		<form id="auth_form" action="/login/" method="post">
+		{% endif %}
+			{% csrf_token %}
+			{{ form }}
+			<input class="submit" type="submit" value="login" />
+		</form>
+	</div>
+{% else %}
+	<div id="auth_form_container">
+		<img src="{% static "img/logo.png" %}">
+	</div>
+	<div id="login_signup_link"><a href="/logout">logout</a></div>
+{% endif %}
