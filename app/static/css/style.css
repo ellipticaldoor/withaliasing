@@ -97,7 +97,11 @@ __________________________________________________________________________ */
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+
+	margin-bottom: 1px;
 }
+
+.nav_selected { border-bottom: 2px solid #fafafa; }
 
 #header div
 {
@@ -148,6 +152,16 @@ __________________________________________________________________________ */
 	width: 100vw;
 
 	text-align: center;
+
+	border-bottom: 1px solid #23faf2;
+}
+
+.tab_selected
+{
+	text-decoration: underline;
+
+	border-bottom: 2px solid #23faf2 !important;
+	color: #9744f4 !important;
 }
 
 #tab div
@@ -160,20 +174,16 @@ __________________________________________________________________________ */
 	cursor: pointer;
 
 	color: #f4449e;
-	border-bottom: .3em solid #fafafa;
+	border-bottom: 2px solid #fafafa;
 }
 
 #tab div:hover { text-decoration: underline; }
 
-.tab_selected
+#content
 {
-	text-decoration: underline;
-
-	border-bottom: .3em solid #23faf2 !important;
-	color: #9744f4 !important;
+	width: 100vw;
+	margin-bottom: 1em;
 }
-
-#content { width: 100vw; }
 
 #info
 {
@@ -222,6 +232,38 @@ __________________________________________________________________________ */
 	padding: 1.2em;
 }
 
+.howto_image
+{
+	width: 100%;
+	height: 10em;
+	margin-bottom: .5em;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+@media (min-width: 500px)
+{
+	.card_howtos .card_title
+	{
+		display: inline-block;
+		float: right;
+
+		width: calc(100% - 6em);
+	}
+
+	.howto_image
+	{
+		float: left;
+
+		width: 8em;
+		height: 8em;
+
+		border-radius: 100px;
+	}
+}
+
 @media (min-width: 900px)
 {
 	.info_card
@@ -231,7 +273,7 @@ __________________________________________________________________________ */
 		max-width: 350px;
 	}
 
-	.card_game
+	.card_games
 	{
 		float: left;
 
@@ -239,11 +281,9 @@ __________________________________________________________________________ */
 		padding: 2em 2em 0 2em;
 	}
 
-
-	.content_with_card_game
+	.content_with_card_games
 	{
-		display: table !important;
-
+		width: 100%;
 		max-width: 2080px;
 		margin: 0 auto;
 		padding: 0 1em 1em 1em;
@@ -254,10 +294,13 @@ __________________________________________________________________________ */
 
 .card_info
 {
-	margin-top: 1em;
+	display: inline-block;
+
+	width: 100%;
 
 	color: #23faf2;
 	border-top: 1px solid #23faf2;
+	margin-top: .5em;
 }
 
 .card_info li { padding: 0 .4em; }

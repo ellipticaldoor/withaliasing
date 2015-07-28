@@ -2,12 +2,12 @@
 {% load static from staticfiles %}
 
 {% block content %}
-	<section id="content" class="content_with_card_games">
+	<section id="content">
 		{% for object in object_list %}
-			<div class="card card_games">
+			<div class="card card_howtos">
 				<a href="{{ object.get_absolute_url }}">
 					<h1 class="card_title">{{ object.title }}</h1>
-					<img src="{{ object.get_image_url }}" alt="{{ object.title }}" />
+					<div class="howto_image" style="background-image: url('{{ object.get_image_url }}');"></div>
 				</a>
 				<ul class="card_info">
 					<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
