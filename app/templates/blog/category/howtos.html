@@ -4,9 +4,9 @@
 {% block content %}
 	<section id="content">
 		{% for object in object_list %}
-			<div class="card card_howtos">
+			<div class="card">
 				<a href="{{ object.get_absolute_url }}">
-					<h1 class="card_title">{{ object.title }}</h1>
+					<h1 class="card_title card_title_howtos">{{ object.title }}</h1>
 					<div class="howto_image" style="background-image: url('{{ object.get_image_url }}');"></div>
 				</a>
 				<ul class="card_info">

@@ -97,11 +97,7 @@ __________________________________________________________________________ */
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-
-	margin-bottom: 1px;
 }
-
-.nav_selected { border-bottom: 2px solid #fafafa; }
 
 #header div
 {
@@ -121,7 +117,7 @@ __________________________________________________________________________ */
 
 nav
 {
-	line-height: 1.9em;
+	line-height: 2em;
 
 	overflow: auto;
 
@@ -243,9 +239,13 @@ __________________________________________________________________________ */
 	background-size: cover;
 }
 
+.card_title_howtos:hover {
+	text-decoration: underline;
+}
+
 @media (min-width: 500px)
 {
-	.card_howtos .card_title
+	.card_title_howtos
 	{
 		display: inline-block;
 		float: right;

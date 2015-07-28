@@ -8,30 +8,15 @@ class BlogView(ListView):
 	queryset = Entry.objects.published()
 	paginate_by = 5
 
-	def get_context_data(self, **kwargs):
-		context = super(BlogView, self).get_context_data(**kwargs)
-		context['nav_selected'] = 'blog'
-		return context
-
 
 class GamesView(ListView):
 	template_name = 'blog/category/games.html'
 	queryset = Entry.objects.by_category('games')
 
-	def get_context_data(self, **kwargs):
-		context = super(GamesView, self).get_context_data(**kwargs)
-		context['nav_selected'] = 'games'
-		return context
-
 
 class HowtosView(ListView):
 	template_name = 'blog/category/howtos.html'
 	queryset = Entry.objects.by_category('howtos')
-
-	def get_context_data(self, **kwargs):
-		context = super(HowtosView, self).get_context_data(**kwargs)
-		context['nav_selected'] = 'howtos'
-		return context
 
 
 class CategoryView(ListView):
