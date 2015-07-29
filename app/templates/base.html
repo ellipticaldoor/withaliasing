@@ -19,21 +19,61 @@
 	{% block js_head %}{% endblock %}
 </head>
 <body>
-	<section id="header" class="noselect">
-		<div><a href="/"><h1>with aliasing</h1></a></div>
-		<nav>
-			<ul>
-				<li><a href="/howtos"><h4>howtos</h4></a></li>
-				<li><a href="/games"><h4>games</h4></a></li>
-			</ul>
-		</nav>
-	</section>
+	{% block header %}
+		<section id="header" class="noselect">
+			<div><a href="/"><h1>with aliasing</h1></a></div>
+			<nav>
+				<ul>
+					<li><a href="/howtos"><h4>howtos</h4></a></li>
+					<li><a href="/games"><h4>games</h4></a></li>
+				</ul>
+			</nav>
+		</section>
+	{% endblock %}
 
-	{% block tab %}{% endblock %}
+	{% block tab %}
+		<section id="tab" class="noselect">
+			<div id="tab_content" class="tab_selected">content</div>
+			<div id="tab_info" >info</div>
+		</section>
+	{% endblock %}
 
 	{% block content %}{% endblock %}
 
-	{% block info %}{% endblock %}
+	{% block info %}
+		<section id="info">
+			{% if user.is_authenticated %}
+				<div class="card info_card">
+					<h1 class="title">panel</h1>
+					<div class="card_content">
+						<p><a href="/new_entry">new entry</a></p>
+						<p><a href="/all_entries">all entries</a></p>
+						<p><a href="/images">images</a></p>
+						<p><a href="/categories">categories</a></p>
+						<p><a href="/logout">logout</a></p>
+					</div>
+				</div>
+			{% endif %}
+
+			<div class="card info_card">
+				<h1 class="title">about</h1>
+				<div class="card_content">
+					<p><a href="mailto:dortamiguel@gmail.com" target="_blank">email</a></p>
+					<p><a href="https://twitter.com/ellipticaldoor">twitter</a></p>
+					<p><a href="https://github.com/ellipticaldoor/">github</a></p>
+					<p><a href="/rss">rss</a></p>
+				</div>
+			</div>
+
+			<div class="card info_card">
+				<h1 class="title">categories</h1>
+				<div class="card_content">
+					<p><a href="#">mail</a></p>
+					<p><a href="/rss">rss</a></p>
+				</div>
+			</div>
+		</section>
+	{% endblock %}
 
 	<script src="{% static "js/lib/zepto_1.1.6.min.js" %}"></script>
 	<script src="{% static "js/global.js" %}"></script>

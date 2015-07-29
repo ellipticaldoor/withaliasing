@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
+{% block title %}games{% endblock %}
 
 {% block content %}
 	<section id="content" class="content_with_card_games">
@@ -16,3 +17,6 @@
 		{% endfor %}
 	</section>
 {% endblock %}
+
+{% block tab %}{% endblock %}
+{% block info %}{% endblock %}

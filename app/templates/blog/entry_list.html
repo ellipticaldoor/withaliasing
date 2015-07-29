@@ -1,54 +1,26 @@
-{% extends 'blog/entry.html' %}
-
-{% block tab %}
-	<section id="tab" class="noselect">
-		<div id="tab_content" class="tab_selected">content</div>
-		<div id="tab_info" >info</div>
-	</section>
-{% endblock %}
+{% extends 'base.html' %}
+{% block title %}{{ category }}{% endblock %}
 
 {% block content %}
-	<section id="content" class="content_with_list">
+	<section id="content" class="content_with_tabs">
 		{% for object in object_list %}
 			{% block entry %}
-				{{ block.super }}
+				<div class="card">
+					<a href="{{ object.get_absolute_url }}">
+						<h1 class="card_title">{{ object.title }}</h1>
+						{% if object.image %}
+							<img src="{{ object.get_image_url }}" alt="{{ object.title }}" />
+						{% endif %}
+					</a>
+					<div class="card_content">{{ object.body_html|safe }}</div>
+					<ul class="card_info">
+						<li><a href="{{ object.get_category_url }}"><h5>{{ object.category }}</h5></a></li>
+						<li><h5>/</h5></li>
+						<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
+					</ul>
+				</div>
 			{% endblock %}
 		{% endfor %}
-	</section>
-{% endblock %}
-
-{% block info %}
-	<section id="info">
-		{% if user.is_authenticated %}
-			<div class="card info_card">
-				<h1 class="title">panel</h1>
-				<div class="card_content">
-					<p><a href="/new_entry">new entry</a></p>
-					<p><a href="/all_entries">all entries</a></p>
-					<p><a href="/images">images</a></p>
-					<p><a href="/categories">categories</a></p>
-					<p><a href="/logout">logout</a></p>
-				</div>
-			</div>
-		{% endif %}
-
-		<div class="card info_card">
-			<h1 class="title">about</h1>
-			<div class="card_content">
-				<p><a href="mailto:dortamiguel@gmail.com" target="_blank">email</a></p>
-				<p><a href="https://twitter.com/ellipticaldoor">twitter</a></p>
-				<p><a href="https://github.com/ellipticaldoor/">github</a></p>
-				<p><a href="/rss">rss</a></p>
-			</div>
-		</div>
-
-		<div class="card info_card">
-			<h1 class="title">categories</h1>
-			<div class="card_content">
-				<p><a href="#">mail</a></p>
-				<p><a href="/rss">rss</a></p>
-			</div>
-		</div>
 	</section>
 {% endblock %}
 

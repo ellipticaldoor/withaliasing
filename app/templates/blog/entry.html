@@ -1,22 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'blog/entry_list.html' %}
+{% block title %}{{ object.title }}{% endblock %}
 
 {% block content %}
 	<section id="content">
 		{% block entry %}
-			<div class="card">
-				<a href="{{ object.get_absolute_url }}">
-					<h1 class="card_title">{{ object.title }}</h1>
-					{% if object.image %}
-						<img src="{{ object.get_image_url }}" alt="{{ object.title }}" />
-					{% endif %}
-				</a>
-				<div class="card_content">{{ object.body_html|safe }}</div>
-				<ul class="card_info">
-					<li><a href="{{ object.get_category_url }}"><h5>{{ object.category }}</h5></a></li>
-					<li><h5>/</h5></li>
-					<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
-				</ul>
-			</div>
+			{{ block.super }}
 		{% endblock %}
 	</section>
 {% endblock %}
+
+{% block tab %}{% endblock %}
+{% block info %}{% endblock %}

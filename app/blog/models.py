@@ -65,7 +65,7 @@ class Entry(models.Model):
 
 	@models.permalink
 	def get_absolute_url(self):
-		return ('entry', [self.category, self.slug,])
+		return ('entry', [self.category.pk, self.slug,])
 
 	@models.permalink
 	def get_category_url(self):
