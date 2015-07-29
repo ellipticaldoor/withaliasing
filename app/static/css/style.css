@@ -33,7 +33,7 @@ input
 	font-family: 'Open Sans';
 	font-size: 115%;
 
-	color: #150821;
+	color: #302129;
 	background-color: #fafafa;
 
 	-webkit-font-smoothing: antialiased;
@@ -43,8 +43,8 @@ input
 
 * { font-weight: normal; }
 
-*::selection { background: #23faf2 }
-*::-moz-selection { background: #23faf2 }
+*::selection { background: #07ffff }
+*::-moz-selection { background: #07ffff }
 
 a
 {
@@ -88,11 +88,11 @@ __________________________________________________________________________ */
 	font-size: 120%;
 
 	width: 100vw;
-	height: 6.5em;
+	margin-bottom: 1em;
 
 	text-align: center;
 
-	background-color: #23faf2;
+	background-color: #07ffff;
 	background-image: url('/s/img/header_bg.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
@@ -109,31 +109,20 @@ __________________________________________________________________________ */
 	cursor: default;
 }
 
-#header div h1
-{
-	opacity: .6;
-	color: #340839;
-}
+#header a { color: #59515d !important; }
 
 nav
 {
-	line-height: 1.8em;
+	line-height: 1em;
 
 	overflow: auto;
 
 	width: 100%;
 	height: 2em;
 	padding: 0;
-
-	background-color: rgba(52, 8, 57, .4);
 }
 
-nav a
-{
-	padding: 0 1em;
-
-	color: #fafafa !important;
-}
+nav a { padding: 0 .8em; font-size: 100%; }
 
 
 /* layout
@@ -149,14 +138,15 @@ __________________________________________________________________________ */
 
 	text-align: center;
 
-	border-bottom: 1px solid #23faf2;
+	border-bottom: 1px solid #07ffff;
+	margin-top: -1em;
 }
 
 .tab_selected
 {
 	text-decoration: underline;
 
-	border-bottom: 2px solid #23faf2 !important;
+	border-bottom: 2px solid #07ffff !important;
 	color: #9744f4 !important;
 }
 
@@ -197,7 +187,7 @@ __________________________________________________________________________ */
 		float: left;
 
 		width: 70vw !important;
-		border-right: 1px solid #23faf2;
+		border-right: 1px solid #07ffff;
 	}
 
 	#info
@@ -298,8 +288,8 @@ __________________________________________________________________________ */
 
 	width: 100%;
 
-	color: #23faf2;
-	border-top: 1px solid #23faf2;
+	color: #07ffff;
+	border-top: 1px solid #07ffff;
 	margin-top: .5em;
 }
 
@@ -307,4 +297,4 @@ __________________________________________________________________________ */
 
 .card_info h5 { display: inline-block; }
 
-.card_date { color: #867a91; }
+.card_date { color: #867a7c; }
