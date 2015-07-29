@@ -15,6 +15,10 @@ class Category(models.Model):
 		verbose_name_plural = 'Categories'
 		ordering = ['slug']
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('category', [self.pk,])
+
 	def __str__(self):
 		return self.slug
 
@@ -62,6 +66,10 @@ class Entry(models.Model):
 	@models.permalink
 	def get_absolute_url(self):
 		return ('entry', [self.category, self.slug,])
+
+	@models.permalink
+	def get_category_url(self):
+		return ('category', [self.category.pk,])
 
 	def get_image_url(self):
 		return '/m/%s' % (self.image)
