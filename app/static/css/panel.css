@@ -1,0 +1,61 @@
+/* input
+__________________________________________________________________________ */
+
+input
+{
+	display: block;
+
+	width: 100%;
+	margin: 0 auto .3em auto;
+	padding: .25em;
+
+	color: #8e8e93;
+	border: 1px solid #dbddde;
+	outline: none;
+	-webkit-box-shadow: none;
+	   -moz-box-shadow: none;
+			box-shadow: none;
+
+	   -moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+input:focus { border: 1px solid #07ffff; }
+
+input[type='submit']
+{
+	width: 100%;
+
+	cursor: pointer;
+
+	color: #59515d;
+	border: 1px solid #07ffff;
+	border-bottom: 1px solid #59515d;
+	background-color: #07ffff;
+}
+
+input[type='submit']:hover
+{
+	color: #fafafa;
+	border: 1px solid #59515d;
+	background-color: #59515d;
+}
+
+input[type='submit']:focus
+{
+	border: 1px solid #59515d;
+	background-color: #59515d;
+}
+
+
+/* login
+__________________________________________________________________________ */
+
+.card_login
+{
+	width: 25%;
+
+	text-align: center;
+}
+
+.card_login img { margin: 0 auto 1em 0; }

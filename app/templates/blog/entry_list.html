@@ -19,12 +19,24 @@
 
 {% block info %}
 	<section id="info">
+		{% if user.is_authenticated %}
+			<div class="card info_card">
+				<h1 class="title">panel</h1>
+				<div class="card_content">
+					<p><a href="/create">create</a></p>
+					<p><a href="/created">created</a></p>
+					<p><a href="/logout">logout</a></p>
+				</div>
+			</div>
+		{% endif %}
+
 		<div class="card info_card">
-			<h1 class="title">panel</h1>
+			<h1 class="title">about</h1>
 			<div class="card_content">
-				<p><a href="/create">create</a></p>
-				<p><a href="/created">created</a></p>
-				<p><a href="/logout">logout</a></p>
+				<p><a href="mailto:dortamiguel@gmail.com" target="_blank">email</a></p>
+				<p><a href="https://twitter.com/ellipticaldoor">twitter</a></p>
+				<p><a href="https://github.com/ellipticaldoor/">github</a></p>
+				<p><a href="/rss">rss</a></p>
 			</div>
 		</div>
 
@@ -32,15 +44,7 @@
 			<h1 class="title">categories</h1>
 			<div class="card_content">
 				<p><a href="#">mail</a></p>
-				<p><a href="#">rss</a></p>
-			</div>
-		</div>
-
-		<div class="card info_card">
-			<h1 class="title">about</h1>
-			<div class="card_content">
-				<p><a href="#">mail</a></p>
-				<p><a href="#">rss</a></p>
+				<p><a href="/rss">rss</a></p>
 			</div>
 		</div>
 	</section>

@@ -110,7 +110,7 @@ AUTH_USER_MODEL = 'user.User'
 
 LOGIN_URL = '/login'
 
-LOGIN_REDIRECT_URL = '/panel'
+LOGIN_REDIRECT_URL = '/'
 
 STATICFILES_FINDERS = (
 	'django.contrib.staticfiles.finders.FileSystemFinder',
