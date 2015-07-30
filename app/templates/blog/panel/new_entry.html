@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}new entry{% endblock %}
+
+{% block content %}
+	<section id="content" class="content_with_tabs">
+		<div class="card">
+			<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div id="main_edit">
+					{{ form.title.errors }}
+					<p>{{ form.title }}</p>
+
+					{{ form.body.errors }}
+					{{ form.body }}
+
+					{{ form.image.errors }}
+					{{ form.image }}
+				</div>
+
+				{{ form.category.errors }}
+				<div id="edit_options">
+					<span id="sub_select">{{ form.category }} sub</span>
+					<span id="draft_chekcbox">borrador {{ form.state.errors }}{{ form.state }}</span>
+					<br>
+				</div>
+				<input id="edit_form_button" type="submit" value="post" />
+			</form>
+		</div>
+	</section>
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+			// Tab manager initialiazation
+			tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
+		});
+	</script>
+{% endblock %}
