@@ -31,7 +31,6 @@ class Youtube(markdown.inlinepatterns.Pattern):
 
 def render_iframe(data_id, player):
 	a_container = etree.Element('a')
-
 	div_container = etree.SubElement(a_container, 'div')
 	div_container.set('class', 'video_container')
 
