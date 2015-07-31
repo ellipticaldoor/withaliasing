@@ -1,4 +1,5 @@
-import markdown
+import markdown, json
+from urllib.request import urlopen
 from markdown.util import etree
 
 
@@ -29,12 +30,30 @@ class Youtube(markdown.inlinepatterns.Pattern):
 
 
 def render_iframe(data_id, player):
-	div_container = etree.Element('div')
-	div_container.set('class', 'video_container')
-	div = etree.SubElement(div_container, 'div')
-	div.set('class', '%s_player player' % player)
-	div.set('data-id', data_id.replace(" ", ""))
-	return div_container
+	a_container = etree.Element('a')
+
+	if player == 'youtube':
+		a_container.set('href', 'https://www.youtube.com/watch?v=%s' % data_id.replace(' ', ''))
+
+		try:
+			thumb_img_src = 'http://i.ytimg.com/vi/%s/maxresdefault.jpg' % data_id.replace(' ', '')
+			urlopen(thumb_img_src)
+		except:
+			thumb_img_src = 'http://i.ytimg.com/vi/%s/hqdefault.jpg' % data_id.replace(' ', '')
+
+	elif player == 'vimeo':
+		a_container.set('href', 'https://vimeo.com/%s' % data_id.replace(' ', ''))
+
+		video_json_info = urlopen('http://vimeo.com/api/v2/video/%s.json' % data_id.replace(' ', '')).read()
+		thumb_img_src = json.loads(video_json_info.decode())[0]['thumbnail_large']
+
+
+	a_container.set('target', '_blank')
+	a_container.set('class', 'video_container')
+	img = etree.SubElement(a_container, 'img')
+	img.set('src', thumb_img_src )
+
+	return a_container
 
 
 def makeExtension(**kwargs):
