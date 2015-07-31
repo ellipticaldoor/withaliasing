@@ -14,8 +14,11 @@
 	<link rel="stylesheet" href="{% static 'css/open_sans.css' %}" type="text/css" charset="utf-8">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" charset="utf-8">
 
-	<link rel="stylesheet" href="{% static 'css/panel.css' %}" type="text/css" charset="utf-8">
+	{% if user.is_authenticated %}
+		<link rel="stylesheet" href="{% static 'css/panel.css' %}" type="text/css" charset="utf-8">
+	{% endif %}
 
+	{% block css %}{% endblock %}
 	{% block js_head %}{% endblock %}
 </head>
 <body>
@@ -46,10 +49,9 @@
 				<div class="card info_card">
 					<h1 class="title">panel</h1>
 					<div class="card_content">
-						<p><a href="/new_entry">new entry</a></p>
-						<p><a href="/all_entries">all entries</a></p>
-						<p><a href="/images">images</a></p>
-						<p><a href="/categories">categories</a></p>
+						<p><a href="/new_entry">new entry</a> / <a href="/all_entries">all entries</a></p>
+						<p><a href="/new_image">new image</a> / <a href="/all_images">all images</a></p>
+						<p><a href="/new_category">new category</a></p>
 						<p><a href="/logout">logout</a></p>
 					</div>
 				</div>

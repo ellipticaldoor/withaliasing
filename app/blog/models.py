@@ -33,6 +33,9 @@ class EntryQuerySet(models.QuerySet):
 	def by_entry(self, category, slug):
 		return self.filter(category=category, slug=slug, status='published')
 
+	def by_user(self, user):
+		return self.filter(user=user)
+
 
 class Entry(models.Model):
 	STATUS_CHOICES = (
@@ -66,6 +69,10 @@ class Entry(models.Model):
 	@models.permalink
 	def get_absolute_url(self):
 		return ('entry', [self.category.pk, self.slug,])
+
+	@models.permalink
+	def get_edit_url(self):
+		return ('edit_entry', [self.category.pk, self.slug,])
 
 	@models.permalink
 	def get_category_url(self):

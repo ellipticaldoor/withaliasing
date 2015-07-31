@@ -2,6 +2,12 @@
 {% load static from staticfiles %}
 {% block title %}login{% endblock %}
 
+{% block css %}
+	{% if not user.is_authenticated %}
+		<link rel="stylesheet" href="{% static 'css/panel.css' %}" type="text/css" charset="utf-8">
+	{% endif %}
+{% endblock %}
+
 {% block content %}
 	<section id="content">
 		<div class="card card_login">

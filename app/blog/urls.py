@@ -9,6 +9,8 @@ urlpatterns = patterns(
 
 	# panel views
 	url(r'^new_entry/$', login_required(views_panel.NewEntryView.as_view()), name='new_entry'),
+	url(r'^all_entries/$', login_required(views_panel.AllEntriesView.as_view()), name='all_entries'),
+	url(r'^(?P<category>[-\w]+)/(?P<slug>.*)/edit$', views_panel.UpdateEntryView.as_view(), name='edit_entry'),
 
 	# url views
 	url(r'^$', views.BlogView.as_view(), name='blog'),
