@@ -63,7 +63,8 @@ class Entry(models.Model):
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title.replace(' ', '_'))
-		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
+		# self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
+		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension(), 'codehilite'], extension_configs={ 'codehilite': { 'linenums': 'False', 'css_class': 'highlight', }, })
 		super(Entry, self).save(*args, **kwargs)
 
 	@models.permalink

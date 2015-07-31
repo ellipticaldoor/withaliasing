@@ -47,6 +47,17 @@ input[type='submit']:focus
 	background-color: #59515d;
 }
 
+textarea {
+	padding: 20px;
+	border: 1px solid #dbddde;
+	font-size: 110%;
+	width: 100%;
+	resize: none;
+	outline: none;
+}
+
+textarea:focus { border: 1px solid #07ffff; }
+
 
 /* login
 __________________________________________________________________________ */

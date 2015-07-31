@@ -11,8 +11,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="{% static "img/logo.png" %}">
 
-	<link rel="stylesheet" href="{% static 'css/open_sans.css' %}" type="text/css" charset="utf-8">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="{% static 'css/monokai.css' %}" type="text/css" charset="utf-8">
 
 	{% if user.is_authenticated %}
 		<link rel="stylesheet" href="{% static 'css/panel.css' %}" type="text/css" charset="utf-8">
@@ -70,8 +70,10 @@
 			<div class="card info_card">
 				<h1 class="title">categories</h1>
 				<div class="card_content">
-					<p><a href="#">mail</a></p>
-					<p><a href="/rss">rss</a></p>
+					<p><a href="#">games</a></p>
+					<p><a href="#">howtos</a></p>
+					<p><a href="#">music</a></p>
+					<p><a href="#">news</a></p>
 				</div>
 			</div>
 		</section>

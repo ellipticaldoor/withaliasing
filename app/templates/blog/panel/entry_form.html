@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'blog/panel/base.html' %}
 {% block title %}new entry{% endblock %}
+{% load static from staticfiles %}
 
 {% block content %}
 	<section id="content" class="content_with_tabs">
@@ -14,10 +15,5 @@
 {% endblock %}
 
 {% block js %}
-	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', function() {
-			// Tab manager initialiazation
-			tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
-		});
-	</script>
+	<script src="{% static "js/lib/autosize_3.0.4.min.js" %}"></script>
 {% endblock %}

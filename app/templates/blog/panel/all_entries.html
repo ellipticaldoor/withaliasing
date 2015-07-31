@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'blog/panel/base.html' %}
 {% block title %}all entries{% endblock %}
 
 {% block content %}
@@ -13,13 +13,4 @@
 			{% endblock %}
 		{% endfor %}
 	</section>
-{% endblock %}
-
-{% block js %}
-	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', function() {
-			// Tab manager initialiazation
-			tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
-		});
-	</script>
 {% endblock %}
