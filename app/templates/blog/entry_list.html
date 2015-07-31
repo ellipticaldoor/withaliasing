@@ -17,6 +17,10 @@
 						<li><a href="{{ object.get_category_url }}"><h5>{{ object.category }}</h5></a></li>
 						<li><h5>/</h5></li>
 						<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
+						{% if user.is_authenticated %}
+							<li><h5>/</h5></li>
+							<li class="card_date"><a href="{{ object.get_edit_url }}"><h5>edit</h5></a></li>
+						{% endif %}
 					</ul>
 				</div>
 			{% endblock %}
