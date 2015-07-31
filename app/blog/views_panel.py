@@ -6,7 +6,7 @@ from blog.models import Entry
 from blog.forms import EntryForm
 
 
-class NewEntryView(CreateView):
+class AddEntryView(CreateView):
 	template_name = 'blog/panel/entry_form.html'
 	form_class = EntryForm
 

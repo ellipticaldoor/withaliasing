@@ -32,9 +32,11 @@ class Youtube(markdown.inlinepatterns.Pattern):
 def render_iframe(data_id, player):
 	a_container = etree.Element('a')
 
-	if player == 'youtube':
-		a_container.set('href', 'https://www.youtube.com/watch?v=%s' % data_id.replace(' ', ''))
+	div_container = etree.SubElement(a_container, 'div')
+	div_container.set('class', 'video_container')
 
+	if player == 'youtube':
+		video_url = 'https://www.youtube.com/watch?v=%s' % data_id.replace(' ', '')
 		try:
 			thumb_img_src = 'http://i.ytimg.com/vi/%s/maxresdefault.jpg' % data_id.replace(' ', '')
 			urlopen(thumb_img_src)
@@ -42,18 +44,15 @@ def render_iframe(data_id, player):
 			thumb_img_src = 'http://i.ytimg.com/vi/%s/hqdefault.jpg' % data_id.replace(' ', '')
 
 	elif player == 'vimeo':
-		a_container.set('href', 'https://vimeo.com/%s' % data_id.replace(' ', ''))
-
+		video_url = 'https://vimeo.com/%s' % data_id.replace(' ', '')
 		video_json_info = urlopen('http://vimeo.com/api/v2/video/%s.json' % data_id.replace(' ', '')).read()
 		thumb_img_src = json.loads(video_json_info.decode())[0]['thumbnail_large']
 
+	div_container.set('onclick', 'window.open("%s", "_blank");' % video_url)
+	div_container.set('style', 'background-image: url("%s");' % thumb_img_src)
+	play_button = etree.SubElement(div_container, 'div')
 
-	a_container.set('target', '_blank')
-	a_container.set('class', 'video_container')
-	img = etree.SubElement(a_container, 'img')
-	img.set('src', thumb_img_src )
-
-	return a_container
+	return div_container
 
 
 def makeExtension(**kwargs):
