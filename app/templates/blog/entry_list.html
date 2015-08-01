@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
-	{% if category %}{{ category }}{% else %}with aliasing{% endif %}
+	{% if category_list %}{{ category_list }}{% else %}with aliasing{% endif %}
 {% endblock %}
 
 {% block content %}
 	<section id="content" class="content_with_tabs">
-		{% if category %}
-			<h1>{{ category }}</h1>
+		{% if category_list %}
+			<div id="category_header" class="card">
+				<a href="/{{ category_list }}">{{ category_list }}</a>
+			</div>
 		{% endif %}
 
 		{% for object in object_list %}
