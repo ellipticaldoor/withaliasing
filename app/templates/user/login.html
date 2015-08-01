@@ -11,21 +11,17 @@
 {% block content %}
 	<section id="content">
 		<div class="card card_login">
+			<a href="/"><img src="{% static "img/logo.png" %}"></a>
+
 			{% if not user.is_authenticated %}
-					<img src="{% static "img/logo.png" %}">
-					{% if next %}
-						<form id="auth_form" action="/login/?next={{next}}" method="post" >
-					{%else%}
-					<form id="auth_form" action="/login/" method="post">
-					{% endif %}
-						{% csrf_token %}
-						{{ form }}
-						<input type="submit" value="login" />
-					</form>
+				{% if next %}<form id="auth_form" action="/login/?next={{next}}" method="post" >{%else%}
+				<form id="auth_form" action="/login/" method="post">
+				{% endif %}
+					{% csrf_token %}
+					{{ form }}
+					<input type="submit" value="login" />
+				</form>
 			{% else %}
-				<div class="card">
-					<img src="{% static "img/logo.png" %}">
-				</div>
 				<div><a href="/logout">logout</a></div>
 			{% endif %}
 		</div>
