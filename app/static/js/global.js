@@ -1,8 +1,7 @@
 /* UI
 __________________________________________________________________________ */
 
-// Tab manager -- TODO: Improve this code when more tabs are needed
-
+// TODO: Improve this code when more tabs are needed
 var tabUI = {
 	currentTab: 'content',
 	showMode: 'mobile',

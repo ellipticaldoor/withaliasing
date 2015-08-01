@@ -246,6 +246,13 @@ __________________________________________________________________________ */
 
 .info_icon { width: 2.5em; }
 
+.info_category_link {
+	display: inline-block;
+	color: #f4449e !important;
+	border: 1px solid #f4449e;
+	padding: .3em;
+}
+
 
 /* cards
 __________________________________________________________________________ */

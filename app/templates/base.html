@@ -69,10 +69,9 @@
 			<div class="card info_card">
 				<h1 class="card_title">categories</h1>
 				<div class="card_content">
-					<p><a href="#">games</a></p>
-					<p><a href="#">howtos</a></p>
-					<p><a href="#">music</a></p>
-					<p><a href="#">news</a></p>
+					{% for category in categories %}
+						<p><a class="info_category_link" href="{{ category.get_absolute_url }}">{{ category.pk }}</a></p>
+					{% endfor %}
 				</div>
 			</div>
 		</section>

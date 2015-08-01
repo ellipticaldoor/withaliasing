@@ -1,11 +1,11 @@
 from django.views.generic import DetailView, ListView
 
-from blog.models import Entry
+from blog.models import Category, Entry
 
 
 class CategoryView(ListView):
 	template_name = 'blog/entry_list.html'
-	paginate_by = 2
+	paginate_by = 3
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax():
@@ -25,9 +25,11 @@ class CategoryView(ListView):
 		if self.kwargs['current'] == 'blog':
 			context['list_url'] = '/'
 		else:
-			list_category = self.kwargs['category']
-			context['category'] = list_category
-			context['list_url'] = '/%s/' % list_category
+			category_list = self.kwargs['category']
+			context['category_list'] = category_list
+			context['list_url'] = '/%s/' % category_list
+
+		context['categories'] = Category.objects.all()
 
 		return context
 
