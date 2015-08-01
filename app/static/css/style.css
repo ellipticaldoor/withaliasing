@@ -60,7 +60,7 @@ a:visited { color: #9744f4; }
 p { margin: .5em .1em; }
 
 pre {
-	font-family: Monaco,Andale Mono,Courier New,monospace;
+	font-family: Monaco, Andale Mono, Courier New, monospace;
 	font-size: 90%;
 	width: 100%;
 }
@@ -106,24 +106,6 @@ li a { display: inline-block; }
 img {
 	width: 100%;
 	border-radius: 2px;
-}
-
-.video_container
-{
-	cursor: pointer;
-	border-radius: 2px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-}
-
-.video_container div
-{
-	width: 100%;
-	padding-bottom: 56.25%;
-
-	background: url('/s/img/icon/play.png') no-repeat center;
-	background-size: 20%;
 }
 
 
@@ -321,7 +303,7 @@ __________________________________________________________________________ */
 
 		max-width: 350px;
 
-		padding: .5em 0;
+		padding: .5em auto;
 	}
 
 	.card_games
@@ -363,6 +345,65 @@ __________________________________________________________________________ */
 
 .card_date { color: #867a7c; }
 
-li a h5:hover {
-	text-decoration: underline;
+li a h5:hover { text-decoration: underline; }
+
+
+/* generics
+__________________________________________________________________________ */
+
+.video_container
+{
+	cursor: pointer;
+	border-radius: 2px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.video_container div
+{
+	width: 100%;
+	padding-bottom: 56.25%;
+
+	background: url('/s/img/icon/play.png') no-repeat center;
+	background-size: 20%;
+}
+
+@-webkit-keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+@-ms-keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+@keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+#loading
+{
+	overflow: auto;
+
+	width: 78px;
+	margin: 0 auto;
+}
+
+#loading div
+{
+	float: left;
+
+	width: 15px;
+	height: 15px;
+	margin: 0 3px 0 3px;
+
+	-webkit-animation: bg_change .5s infinite alternate;
+		-ms-animation: bg_change .5s infinite alternate;
+			animation: bg_change .5s infinite alternate;
+
+	border-radius: 100px;
+	background-color: #34aadc;
 }

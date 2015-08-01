@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}{{ category }}{% endblock %}
+{% block title %}
+	{% if category %}{{ category }}{% else %}with aliasing{% endif %}
+{% endblock %}
 
 {% block content %}
 	<section id="content" class="content_with_tabs">
+		{% if category %}
+			<h1>{{ category }}</h1>
+		{% endif %}
+
 		{% for object in object_list %}
 			{% block entry %}
-				<div class="card">
+				<div class="card entry_card">
 					<a href="{{ object.get_absolute_url }}">
 						<h1 class="card_title">{{ object.title }}</h1>
 						{% if object.image %}
@@ -25,14 +31,19 @@
 				</div>
 			{% endblock %}
 		{% endfor %}
+
+		<div id="loading"><div></div><div></div><div></div></div>
 	</section>
 {% endblock %}
 
 {% block js %}
 	<script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', function() {
-			// Tab manager initialiazation
+			// Tab manager initialization
 			tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
+
+			// Infinite scrolling initialization
+			infiniteScrolling.init('{{ list_url }}');
 		});
 	</script>
 {% endblock %}

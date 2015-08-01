@@ -14,6 +14,14 @@ var tabUI = {
 	leftTab: undefined,
 	rightTab: undefined,
 
+	initTabs: function(contentSectionId, infoSectionId, leftTabId, rightTabId) {
+		this.setSections(contentSectionId, infoSectionId);
+		this.setTabs(leftTabId, rightTabId);
+
+		this.setClickEvents();
+		this.setResizeWindowEvent();
+	},
+
 	setSections: function(contentSectionId, infoSectionId) {
 		this.contentSection = document.getElementById(contentSectionId);
 		this.infoSection = document.getElementById(infoSectionId);
@@ -75,18 +83,56 @@ var tabUI = {
 			this.infoSection.style.display = 'block';
 		}
 	},
-
-	initTabs: function(contentSectionId, infoSectionId, leftTabId, rightTabId) {
-		this.setSections(contentSectionId, infoSectionId);
-		this.setTabs(leftTabId, rightTabId);
-
-		this.setClickEvents();
-		this.setResizeWindowEvent();
-	},
 }
 
 
 /* functionality
 __________________________________________________________________________ */
 
-// infinite scrolling
+var infiniteScrolling = {
+	pageNumber: 2,
+	scroll: true,
+	listUrl: '',
+
+	init: function(listUrl) {
+		this.listUrl = listUrl;
+
+		// TODO: add to the total height the header and the tab
+		if ($('#content').height() < $(window).height()) {
+			this.ajaxCall();
+		}
+
+		var that = this;
+		$(window).scroll(function() {
+			if (this.scroll) {
+				// TODO: change to if currentTab is content
+				//if ( currentTab == 'content') {
+					if($(window).scrollTop() + $(window).height() == $(document).height()) {
+						that.ajaxCall();
+					}
+				//}
+			}
+		});
+	},
+
+	ajaxCall: function() {
+		$.ajax({
+			type: 'GET',
+			url: this.listUrl,
+			data: { 'page' : this.pageNumber, },
+			dataType: 'html',
+			success: this.pageSuccess.bind(this),
+			error: this.pageError.bind(this),
+		});
+	},
+
+	pageError: function() {
+		this.scroll = false;
+		$('#loading').hide();
+	},
+
+	pageSuccess: function(data) {
+		this.pageNumber = this.pageNumber + 1;
+		$(data).insertAfter($('.entry_card').last());
+	},
+}
