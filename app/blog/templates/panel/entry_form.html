@@ -5,7 +5,7 @@
 {% block content %}
 	<section id="content" class="content_with_tabs">
 		<div class="card">
-			<form id="entry_form" action="{% if object.get_edit_url %}{{ object.get_edit_url }}{% else %}/new_entry/{% endif %}" method="post" enctype="multipart/form-data">
+			<form id="entry_form" action="{% if object.get_edit_url %}{{ object.get_edit_url }}{% else %}/add_entry/{% endif %}" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{ form.as_ul }}
 				<input type="submit" value="post" />

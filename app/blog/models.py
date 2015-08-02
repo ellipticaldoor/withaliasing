@@ -44,9 +44,9 @@ class Entry(models.Model):
 	)
 
 	def get_image(instance, filename):
-		if not hasattr(instance.entryid, 'decode'): entryid = instance.entryid
-		else: entryid = instance.entryid.decode('utf-8')
-		return 'entry/%s.jpg' % (entryid)
+		if hasattr(instance.entryid, 'decode'):
+			instance.entryid = instance.entryid.decode('utf-8')
+		return 'entry/%s.jpg' % (instance.entryid)
 
 	entryid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	user = models.ForeignKey(User, related_name='entries')
@@ -86,4 +86,45 @@ class Entry(models.Model):
 
 	class Meta:
 		verbose_name_plural = 'Entries'
+		ordering = ['-created']
+
+
+class Image(models.Model):
+	def get_image(instance, filename):
+		if hasattr(instance.imageid, 'decode'):
+			instance.imageid = instance.imageid.decode('utf-8')
+
+		return 'image/%s.jpg' % (instance.imageid )
+
+	imageid = models.CharField(primary_key=True, max_length=16, default=_createId)
+	image = models.ImageField(upload_to=get_image, blank=True, null=True)
+	title = models.CharField(max_length=100, unique=True)
+	created = models.DateTimeField(auto_now_add=True)
+
+	@models.permalink
+	def get_absolute_url(self):
+		# TODO: Finish to setup this url
+		return '/photo.jpg'
+
+	def __str__(self):
+		return self.title
+
+	class Meta:
+		ordering = ['-created']
+
+
+class ImageEntryLink(models.Model):
+	linkid = models.CharField(primary_key=True, max_length=33, blank=True)
+	image = models.ForeignKey(Image, related_name='image_link')
+	entry = models.ForeignKey(Entry, related_name='entry_link')
+	created = models.DateTimeField(auto_now_add=True)
+
+	def save(self, *args, **kwargs):
+		self.linkid = '%s>%s' % (self.image.pk, self.entry.pk)
+		super(ImageEntryLink, self).save(*args, **kwargs)
+
+	def __str__(self):
+		return self.linkid
+
+	class Meta:
 		ordering = ['-created']

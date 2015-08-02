@@ -2,22 +2,20 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-from django.conf import settings
-import core.core
 import blog.models
+import core.core
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('slug', models.SlugField(primary_key=True, max_length=40, serialize=False)),
+                ('slug', models.SlugField(max_length=40, serialize=False, primary_key=True)),
             ],
             options={
                 'verbose_name_plural': 'Categories',
@@ -25,37 +23,45 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='CategoryToEntry',
-            fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
-                ('category', models.ForeignKey(to='blog.Category')),
-            ],
-            options={
-                'ordering': ['entry'],
-            },
-        ),
-        migrations.CreateModel(
             name='Entry',
             fields=[
-                ('entryid', models.CharField(default=core.core._createId, primary_key=True, max_length=16, serialize=False)),
+                ('entryid', models.CharField(max_length=16, default=core.core._createId, serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=100, unique=True)),
                 ('slug', models.SlugField(max_length=100, unique=True)),
                 ('body', models.TextField()),
-                ('body_html', models.TextField(blank=True, null=True)),
-                ('image', models.ImageField(blank=True, upload_to=blog.models.Entry.get_image, null=True)),
-                ('status', models.CharField(default='draft', max_length=10, choices=[('draft', 'draft'), ('published', 'published')], db_index=True)),
+                ('body_html', models.TextField(null=True, blank=True)),
+                ('image', models.ImageField(null=True, upload_to=blog.models.Entry.get_image, blank=True)),
+                ('status', models.CharField(db_index=True, max_length=10, default='draft', choices=[('draft', 'draft'), ('published', 'published')])),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('category', models.ForeignKey(related_name='categories', to='blog.Category')),
-                ('user', models.ForeignKey(related_name='entries', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name_plural': 'Entries',
                 'ordering': ['-created'],
             },
         ),
-        migrations.AddField(
-            model_name='categorytoentry',
-            name='entry',
-            field=models.ForeignKey(to='blog.Entry'),
+        migrations.CreateModel(
+            name='Image',
+            fields=[
+                ('imageid', models.CharField(max_length=16, default=core.core._createId, serialize=False, primary_key=True)),
+                ('image', models.ImageField(null=True, upload_to=blog.models.Image.get_image, blank=True)),
+                ('title', models.CharField(max_length=100, unique=True)),
+                ('created', models.DateTimeField(auto_now_add=True)),
+            ],
+            options={
+                'ordering': ['-created'],
+            },
+        ),
+        migrations.CreateModel(
+            name='ImageEntryLink',
+            fields=[
+                ('linkid', models.CharField(max_length=33, serialize=False, primary_key=True, blank=True)),
+                ('created', models.DateTimeField(auto_now_add=True)),
+                ('entry', models.ForeignKey(related_name='entry_link', to='blog.Entry')),
+                ('image', models.ForeignKey(related_name='image_link', to='blog.Image')),
+            ],
+            options={
+                'ordering': ['-created'],
+            },
         ),
     ]
