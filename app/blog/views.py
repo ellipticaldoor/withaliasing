@@ -5,12 +5,12 @@ from blog.models import Category, Entry
 
 
 class CategoryView(ListView):
-	template_name = 'blog/entry_list.html'
+	template_name = 'entry_list.html'
 	paginate_by = 3
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax():
-			self.template_name = 'blog/ajax/entry_list.html'
+			self.template_name = 'ajax/entry_list.html'
 
 		return super(CategoryView, self).get(request, *args, **kwargs)
 
@@ -39,23 +39,21 @@ class CategoryView(ListView):
 			context['category_list'] = category_list
 			context['list_url'] = '/%s/' % category_list
 
-		context['categories'] = Category.objects.all()
-
 		return context
 
 
 class GamesView(ListView):
-	template_name = 'blog/category/games.html'
+	template_name = 'category/games.html'
 	queryset = Entry.objects.by_category('games')
 
 
 class HowtosView(ListView):
-	template_name = 'blog/category/howtos.html'
+	template_name = 'category/howtos.html'
 	queryset = Entry.objects.by_category('howtos')
 
 
 class EntryView(DetailView):
-	template_name = 'blog/entry.html'
+	template_name = 'entry.html'
 
 	def get_queryset(self):
 		return Entry.objects.by_entry(self.kwargs['category'], self.kwargs['slug'])

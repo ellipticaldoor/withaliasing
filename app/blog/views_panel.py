@@ -7,7 +7,7 @@ from blog.forms import EntryForm, CategoryForm
 
 
 class AddEntryView(CreateView):
-	template_name = 'blog/panel/entry_form.html'
+	template_name = 'panel/entry_form.html'
 	form_class = EntryForm
 
 	def form_valid(self, form):
@@ -22,7 +22,7 @@ class AddEntryView(CreateView):
 
 
 class UpdateEntryView(UpdateView):
-	template_name = 'blog/panel/entry_form.html'
+	template_name = 'panel/entry_form.html'
 	form_class = EntryForm
 
 	def get_queryset(self):
@@ -39,12 +39,12 @@ class UpdateEntryView(UpdateView):
 
 
 class AllEntriesView(ListView):
-	template_name = 'blog/panel/all_entries.html'
+	template_name = 'panel/all_entries.html'
 
 	def get_queryset(self):
 		return Entry.objects.by_user(self.request.user)
 
 
 class AddCategoryView(CreateView):
-	template_name = 'blog/panel/category_form.html'
+	template_name = 'panel/category_form.html'
 	form_class = CategoryForm
