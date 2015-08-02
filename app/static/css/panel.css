@@ -9,8 +9,7 @@ input
 	margin: 0 auto .3em auto;
 	padding: .25em;
 
-	color: #8e8e93;
-	border: 1px solid #dbddde;
+	border: 1px solid #ede7e8;
 	outline: none;
 	-webkit-box-shadow: none;
 	   -moz-box-shadow: none;
@@ -28,35 +27,93 @@ input[type='submit']
 
 	cursor: pointer;
 
-	color: #59515d;
-	border: 1px solid #07ffff;
-	border-bottom: 1px solid #59515d;
+	color: #1b9094;
+	border: 0;
+	border-bottom: 1px solid #1b9094;
 	background-color: #07ffff;
 }
 
 input[type='submit']:hover
 {
 	color: #fafafa;
-	border: 1px solid #59515d;
-	background-color: #59515d;
+	border: 0;
+	border-bottom: 1px solid #1b9094;
+	background-color: #1b9094;
 }
 
 input[type='submit']:focus
 {
-	border: 1px solid #59515d;
-	background-color: #59515d;
+	border: 0;
+	border-bottom: 1px solid #1b9094;
+	background-color: #1b9094;
 }
 
-textarea {
-	padding: 20px;
-	border: 1px solid #dbddde;
+input[type='file']
+{
+	line-height: 0;
+
+	padding: 0;
+
+	color: #fafafa;
+	border: 0;
+}
+
+input[type='checkbox']
+{
+	display: inline-block;
+
+	width: auto;
+	margin: 0 auto auto 5px;
+
+	cursor: pointer;
+
+	-webkit-appearance: checkbox;
+	   -moz-appearance: checkbox;
+}
+
+label
+{
+	font-size: 90%;
+
+	display: inline-block;
+
+	padding: 0;
+
+	color: #8e8e93;
+}
+
+textarea
+{
 	font-size: 110%;
+
 	width: 100%;
+	padding: 20px;
+
 	resize: none;
+
+	border: 1px solid #ede7e8;
 	outline: none;
 }
 
 textarea:focus { border: 1px solid #07ffff; }
+
+select
+{
+	margin: 0;
+	padding: 5px;
+
+	cursor: pointer;
+
+	color: #8e8e93;
+	border: 1px solid #ede7e8;
+	outline: none;
+	background-color: white;
+	font-size: 90%;
+
+	-moz-appearance: button;
+}
+
+select:focus { border: 1px solid #07ffff;}
 
 
 /* login
@@ -70,3 +127,42 @@ __________________________________________________________________________ */
 }
 
 .card_login img { margin: 0 auto 1em 0; }
+
+
+/* entry form
+__________________________________________________________________________ */
+
+#entry_form select
+{
+	float: right;
+
+	margin-left: 5px;
+}
+
+#entry_form #id_title
+{
+	font-size: 100%;
+
+	color: #867a7c;
+}
+
+#entry_form #id_body { font-size: 100%; }
+
+#entry_form #image_entry_edit
+{
+	float: left;
+
+	width: 50%;
+	margin-bottom: 5px;
+}
+
+#entry_form #id_image
+{
+	display: inline-block;
+
+	width: auto;
+	max-width: 40%;
+	margin: 0;
+}
+
+#entry_form input[type='submit'] { border-top: 5px solid #fafafa; }
