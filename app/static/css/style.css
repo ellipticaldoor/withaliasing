@@ -103,6 +103,12 @@ li { display: inline; }
 
 li a { display: inline-block; }
 
+hr {
+	border: 0;
+	height: 1px;
+	background: #07ffff;
+}
+
 img {
 	width: 100%;
 	border-radius: 2px;

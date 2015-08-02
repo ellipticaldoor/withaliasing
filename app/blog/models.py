@@ -68,15 +68,15 @@ class Entry(models.Model):
 
 	@models.permalink
 	def get_absolute_url(self):
-		return ('entry', [self.category.pk, self.slug,])
+		return ('entry', [self.category_id, self.slug,])
 
 	@models.permalink
 	def get_edit_url(self):
-		return ('edit_entry', [self.category.pk, self.slug,])
+		return ('edit_entry', [self.category_id, self.slug,])
 
 	@models.permalink
 	def get_category_url(self):
-		return ('category', [self.category.pk,])
+		return ('category', [self.category_id,])
 
 	def get_image_url(self):
 		return '/m/%s' % (self.image)
@@ -120,7 +120,7 @@ class ImageEntryLink(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 
 	def save(self, *args, **kwargs):
-		self.linkid = '%s>%s' % (self.image.pk, self.entry.pk)
+		self.linkid = '%s>%s' % (self.image_pk, self.entry_pk)
 		super(ImageEntryLink, self).save(*args, **kwargs)
 
 	def __str__(self):
