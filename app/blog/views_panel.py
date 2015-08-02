@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
 from blog.models import Entry
-from blog.forms import EntryForm
+from blog.forms import EntryForm, CategoryForm
 
 
 class AddEntryView(CreateView):
@@ -43,3 +43,8 @@ class AllEntriesView(ListView):
 
 	def get_queryset(self):
 		return Entry.objects.by_user(self.request.user)
+
+
+class AddCategoryView(CreateView):
+	template_name = 'blog/panel/category_form.html'
+	form_class = CategoryForm

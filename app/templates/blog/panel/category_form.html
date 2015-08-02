@@ -1,0 +1,14 @@
+{% extends 'blog/panel/base.html' %}
+{% block title %}new category{% endblock %}
+
+{% block content %}
+	<section id="content" class="content_with_tabs">
+		<div class="card">
+			<form action="/add_category/" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input type="submit" value="post" />
+			</form>
+		</div>
+	</section>
+{% endblock %}

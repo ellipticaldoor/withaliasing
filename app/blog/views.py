@@ -1,4 +1,5 @@
 from django.views.generic import DetailView, ListView
+from django.http import Http404
 
 from blog.models import Category, Entry
 
@@ -15,9 +16,18 @@ class CategoryView(ListView):
 
 	def get_queryset(self):
 		if self.kwargs['current'] == 'blog':
-			return Entry.objects.published()
+			entries = Entry.objects.published()
 		else:
-			return Entry.objects.by_category(self.kwargs['category'])
+			category = self.kwargs['category']
+			entries = Entry.objects.by_category(category)
+
+			if not entries:
+				try:
+					Category.objects.get(slug=category)
+				except:
+					raise Http404
+
+		return entries
 
 	def get_context_data(self, **kwargs):
 		context = super(CategoryView, self).get_context_data(**kwargs)

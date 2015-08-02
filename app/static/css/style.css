@@ -246,11 +246,22 @@ __________________________________________________________________________ */
 
 .info_icon { width: 2.5em; }
 
-.info_category_link {
+.info_category_link
+{
 	display: inline-block;
+
+	padding: .3em;
+
 	color: #f4449e !important;
 	border: 1px solid #f4449e;
-	padding: .3em;
+}
+
+.info_category_link:hover
+{
+	color: #fafafa !important;
+	border: 1px solid #f4449e;
+	background-color: #f4449e;
+	text-decoration: none;
 }
 
 
