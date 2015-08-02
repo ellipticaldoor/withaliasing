@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block title %}howtos{% endblock %}
+
+{% block content %}
+	<section id="content">
+		{% for object in object_list %}
+			<div class="card">
+				<a href="{{ object.get_absolute_url }}">
+					<h1 class="card_title card_title_howtos">{{ object.title }}</h1>
+					<div class="howto_image" style="background-image: url('{{ object.get_image_url }}');"></div>
+				</a>
+				<ul class="card_info">
+					<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
+				</ul>
+			</div>
+		{% endfor %}
+	</section>
+{% endblock %}
+
+{% block tab %}{% endblock %}
+{% block info %}{% endblock %}

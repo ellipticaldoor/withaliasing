@@ -1,0 +1,14 @@
+{% extends 'entry_list.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+	<section id="content">
+		{% block entry %}
+			{{ block.super }}
+		{% endblock %}
+	</section>
+{% endblock %}
+
+{% block tab %}{% endblock %}
+{% block info %}{% endblock %}
+{% block js %}{% endblock %}

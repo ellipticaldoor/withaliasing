@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+	{% if category_list %}{{ category_list }}{% else %}with aliasing{% endif %}
+{% endblock %}
+
+{% block content %}
+	<section id="content" class="content_with_tabs">
+		{% if category_list %}
+			<div id="category_header" class="card">
+				<a href="/{{ category_list }}">{{ category_list }}</a>
+			</div>
+		{% endif %}
+
+		{% if object_list %}
+			{% for object in object_list %}
+				{% block entry %}
+					<div class="card entry_card">
+						<a href="{{ object.get_absolute_url }}">
+							<h1 class="card_title">{{ object.title }}</h1>
+							{% if object.image %}
+								<img src="{{ object.get_image_url }}" alt="{{ object.title }}" />
+							{% endif %}
+						</a>
+						<div class="card_content">{{ object.body_html|safe }}</div>
+						<ul class="card_info">
+							<li><a href="{{ object.get_category_url }}"><h5>{{ object.category }}</h5></a></li>
+							<li><h5>/</h5></li>
+							<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
+							{% if user.is_authenticated %}
+								<li><h5>/</h5></li>
+								<li class="card_date"><a href="{{ object.get_edit_url }}"><h5>edit</h5></a></li>
+							{% endif %}
+						</ul>
+					</div>
+				{% endblock %}
+			{% endfor %}
+		{% else %}
+			<div class="card entry_card">
+				<div class="card_content">no entries in this category :P</div>
+			</div>
+		{% endif %}
+
+		<div id="loading"><div></div><div></div><div></div></div>
+	</section>
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+			// Tab manager initialization
+			tabUI.initTabs('content', 'info', 'tab_content', 'tab_info');
+
+			// Infinite scrolling initialization
+			infiniteScrolling.init('{{ list_url }}');
+		});
+	</script>
+{% endblock %}
