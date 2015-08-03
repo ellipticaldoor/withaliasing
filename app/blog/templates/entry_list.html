@@ -14,13 +14,13 @@
 		{% if object_list %}
 			{% for object in object_list %}
 				{% block entry %}
+						{% block entry_title %}
 					<div class="card entry_card">
-						<a href="{{ object.get_absolute_url }}">
-							<h1 class="card_title">{{ object.title }}</h1>
-							{% if object.image %}
-								<img src="{{ object.get_image_url }}" alt="{{ object.title }}" />
-							{% endif %}
-						</a>
+							<a href="{{ object.get_absolute_url }}">
+								<h1 class="card_title">{{ object.title }}</h1>
+								{% if object.image %}<img class="image_title" src="{{ object.get_image_url }}" alt="{{ object.title }}" />{% endif %}
+							</a>
+						{% endblock %}
 						<div class="card_content">{{ object.body_html|safe }}</div>
 						<ul class="card_info">
 							<li><a href="{{ object.get_category_url }}"><h5>{{ object.category_id }}</h5></a></li>
