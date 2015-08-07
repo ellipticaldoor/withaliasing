@@ -35,7 +35,7 @@ input[type='submit']
 
 input[type='submit']:hover
 {
-	color: #fafafa;
+	color: #fff;
 	border: 0;
 	border-bottom: 1px solid #1b9094;
 	background-color: #1b9094;
@@ -55,7 +55,7 @@ input[type='file']
 	padding: 0;
 
 	/*color: #ede7e8;*/
-	color: #fafafa;
+	color: #fff;
 	border: 0;
 }
 
@@ -108,7 +108,7 @@ select
 	color: #8e8e93;
 	border: 1px solid #ede7e8;
 	outline: none;
-	background-color: #fafafa;
+	background-color: #fff;
 	font-size: 90%;
 
 	-moz-appearance: button;
@@ -166,4 +166,4 @@ __________________________________________________________________________ */
 	margin: 0;
 }
 
-#entry_form input[type='submit'] { border-top: 5px solid #fafafa; }
+#entry_form input[type='submit'] { border-top: 5px solid #fff; }

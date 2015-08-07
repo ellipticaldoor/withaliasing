@@ -18,7 +18,7 @@
 					<div class="card entry_card">
 							<a href="{{ object.get_absolute_url }}">
 								<h1 class="card_title">{{ object.title }}</h1>
-								{% if object.image %}<img class="image_title" src="{{ object.get_image_url }}" alt="{{ object.title }}" />{% endif %}
+								{% if object.image %}<div class="entry_image" style="background-image: url('{{ object.get_image_url }}');"></div>{% endif %}
 							</a>
 						{% endblock %}
 						<div class="card_content">{{ object.body_html|safe }}</div>
