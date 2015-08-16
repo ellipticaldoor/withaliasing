@@ -1,0 +1,8 @@
+unset DJANGO_SETTINGS_MODULE
+unset SECRET_KEY
+unset DB_NAME
+unset DB_USER
+unset DB_PASSWORD
+unset DB_HOST
+unset DB_PORT
+unset LANGUAGE
