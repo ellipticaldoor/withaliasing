@@ -4,7 +4,7 @@ Thumbs.db
 s/
 m/
 media/
-collect_static/
+collectstatic/
 run/
 logs/
 __pycache__/
