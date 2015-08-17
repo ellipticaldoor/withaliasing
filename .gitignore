@@ -3,6 +3,8 @@ Thumbs.db
 *.pyc
 s/
 m/
+media/
+collect_static/
 run/
 logs/
 __pycache__/
