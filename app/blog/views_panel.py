@@ -48,3 +48,4 @@ class AllEntriesView(ListView):
 class AddCategoryView(CreateView):
 	template_name = 'panel/category_form.html'
 	form_class = CategoryForm
+	success_url = '/all_entries'
