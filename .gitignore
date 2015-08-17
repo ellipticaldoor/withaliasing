@@ -3,5 +3,7 @@ Thumbs.db
 *.pyc
 s/
 m/
+run/
+logs/
 __pycache__/
 todo.md
