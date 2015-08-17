@@ -30,13 +30,13 @@ body,
 textarea,
 input
 {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-	font-size: 115%;
+	word-wrap: break-word;
 
 	color: #302129;
 	background-color: #fff;
-	word-wrap: break-word;
+
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 115%;
 
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -49,7 +49,6 @@ strong { font-weight: bold; }
 a
 {
 	text-decoration: none;
-
 	color: #f4449e;
 }
 
@@ -57,12 +56,13 @@ a:hover { text-decoration: underline; }
 
 a:visited { color: #9744f4; }
 
-p { margin: .5em .1em; }
+p { margin: .9em .3em; }
 
 pre {
+	width: 100%;
+
 	font-family: Monaco, Andale Mono, Courier New, monospace;
 	font-size: 90%;
-	width: 100%;
 }
 
 .highlighttable { margin: 1em .4em 1em .4em; }
@@ -71,8 +71,6 @@ pre { overflow: hidden; }
 
 .highlight
 {
-	font-size: 90%;
-
 	display: block;
 	overflow: hidden;
 
@@ -83,6 +81,8 @@ pre { overflow: hidden; }
 	word-wrap: break-word;
 
 	border-radius: 3px;
+
+	font-size: 90%;
 }
 
 
@@ -104,13 +104,15 @@ li { display: inline; }
 li a { display: inline-block; }
 
 hr {
-	border: 0;
 	height: 1px;
+
+	border: 0;
 	background: #07ffff;
 }
 
 img {
 	width: 100%;
+
 	border-radius: 2px;
 }
 
@@ -120,8 +122,6 @@ __________________________________________________________________________ */
 
 #header
 {
-	font-size: 120%;
-
 	margin-bottom: 1em;
 
 	text-align: center;
@@ -129,16 +129,17 @@ __________________________________________________________________________ */
 	background: url('/s/img/header_bg.jpg') no-repeat center;
 	background-color: #07ffff;
 	background-size: cover;
+
+	font-size: 120%;
 }
 
 #header div
 {
-	line-height: 4.25em;
-
 	width: 100%;
 	height: 4.5em;
 
 	cursor: default;
+	line-height: 4.25em;
 }
 
 #header div a
@@ -149,8 +150,6 @@ __________________________________________________________________________ */
 
 nav
 {
-	line-height: 1.95em;
-
 	overflow: auto;
 
 	width: 100%;
@@ -159,6 +158,8 @@ nav
 
 	opacity: .5;
 	background-color: #302129;
+
+	line-height: 1.95em;
 }
 
 nav a
@@ -174,24 +175,24 @@ __________________________________________________________________________ */
 
 #tab
 {
-	font-size: 85%;
-
 	overflow: auto;
 
 	width: 100vw;
+	margin-top: -1em;
 
 	text-align: center;
 
 	border-bottom: 1px solid #07ffff;
-	margin-top: -1em;
+
+	font-size: 85%;
 }
 
 .tab_selected
 {
 	text-decoration: underline;
 
-	border-bottom: 2px solid #07ffff !important;
 	color: #9744f4 !important;
+	border-bottom: 2px solid #07ffff !important;
 }
 
 #tab div
@@ -231,6 +232,7 @@ __________________________________________________________________________ */
 		float: left;
 
 		width: 75vw !important;
+
 		border-right: 1px solid #07ffff;
 	}
 
@@ -244,9 +246,9 @@ __________________________________________________________________________ */
 
 	#info .card
 	{
-		font-size: 95%;
-
 		max-width: 350px;
+
+		font-size: 95%;
 	}
 }
 
@@ -264,10 +266,11 @@ __________________________________________________________________________ */
 
 .info_category_link:hover
 {
+	text-decoration: none;
+
 	color: #fff !important;
 	border: 1px solid #f4449e;
 	background-color: #f4449e;
-	text-decoration: none;
 }
 
 
@@ -305,13 +308,13 @@ __________________________________________________________________________ */
 
 #category_header
 {
-	font-size: 250%;
-
 	overflow: auto;
 
 	padding: .35em 0 0 0;
 
 	text-align: center;
+
+	font-size: 250%;
 }
 
 #category_header a { color: #f4449e !important; }
@@ -341,11 +344,10 @@ __________________________________________________________________________ */
 {
 	.info_card
 	{
-		font-size: 85%;
-
 		max-width: 350px;
-
 		padding: .5em auto;
+
+		font-size: 85%;
 	}
 
 	.card_games
@@ -375,16 +377,21 @@ __________________________________________________________________________ */
 
 .card_full_title {font-size: 2.5em;}
 
+.card_content h1 {
+	margin-top: 1em;
+}
+
 .card_info
 {
-	font-size: 110%;
 	display: inline-block;
 
 	width: 100%;
+	margin-top: .5em;
 
 	color: #07ffff;
 	border-top: 1px solid #07ffff;
-	margin-top: .5em;
+
+	font-size: 110%;
 }
 
 .card_info li { padding: 0 .4em; }
@@ -421,7 +428,6 @@ __________________________________________________________________________ */
 .full_title_contatiner
 {
 	margin: 0 1em;
-	border-radius: 2px;
 
 	background-repeat: no-repeat;
 	background-position: center;
@@ -432,7 +438,6 @@ __________________________________________________________________________ */
 {
 	display: inline-block;
 	overflow: auto;
-	border-radius: 2px;
 
 	width: 100%;
 	padding: 2em 0 1.25em 0;
@@ -440,23 +445,22 @@ __________________________________________________________________________ */
 	text-align: center;
 
 	color: #fff;
-	background-color: rgba(0, 0, 0, .35);
-	/*background: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,0));*/
+	background-color: rgba(151, 68, 244, 0.85);
 }
 
 @-webkit-keyframes bg_change {
-	0% { background-color: #007AFF; }
-	100% { background-color: #34AADC; }
+	0% { background-color: #f4449e; }
+	100% { background-color: #9744f4; }
 }
 
 @-ms-keyframes bg_change {
-	0% { background-color: #007AFF; }
-	100% { background-color: #34AADC; }
+	0% { background-color: #f4449e; }
+	100% { background-color: #9744f4; }
 }
 
 @keyframes bg_change {
-	0% { background-color: #007AFF; }
-	100% { background-color: #34AADC; }
+	0% { background-color: #f4449e; }
+	100% { background-color: #9744f4; }
 }
 
 #loading
@@ -480,5 +484,5 @@ __________________________________________________________________________ */
 			animation: bg_change .5s infinite alternate;
 
 	border-radius: 100px;
-	background-color: #34aadc;
+	background-color: #9744f4;
 }
