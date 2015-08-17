@@ -1,0 +1,8 @@
+export DJANGO_SETTINGS_MODULE='withaliasing.settings.development'
+export SECRET_KEY='secret_key'
+export DB_NAME='withaliasing'
+export DB_USER='db_user'
+export DB_PASSWORD='de_password'
+export DB_HOST='localhost'
+export DB_PORT=''
+export LANGUAGE='en-us'
