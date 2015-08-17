@@ -9,3 +9,4 @@ run/
 logs/
 __pycache__/
 todo.md
+.ftpconfig
