@@ -1,16 +1,6 @@
 {% extends 'entry_list.html' %}
 {% block title %}{{ object.title }}{% endblock %}
 
-{% block entry_title %}
-	<div class="full_title_contatiner" {% if object.image %}style="background-image:url({{ object.get_image_url }}); height: 50vh;"{% endif %}>
-		<a href="{{ object.get_absolute_url }}">
-			<h1 class="card_title card_full_title">{{ object.title }}</h1>
-		</a>
-	</div>
-
-	<div class="card entry_card">
-{% endblock %}
-
 {% block content %}
 	<section id="content">
 		{% block entry %}

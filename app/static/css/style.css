@@ -425,29 +425,6 @@ __________________________________________________________________________ */
 	background-size: 20%;
 }
 
-.full_title_contatiner
-{
-	margin: 0 1em;
-
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-}
-
-.full_title_contatiner a
-{
-	display: inline-block;
-	overflow: auto;
-
-	width: 100%;
-	padding: 2em 0 1.25em 0;
-
-	text-align: center;
-
-	color: #fff;
-	background-color: rgba(151, 68, 244, 0.85);
-}
-
 @-webkit-keyframes bg_change {
 	0% { background-color: #f4449e; }
 	100% { background-color: #9744f4; }
