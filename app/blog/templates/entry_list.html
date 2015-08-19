@@ -52,18 +52,6 @@
 
 			// Infinite scrolling initialization
 			infiniteScrolling.init('{{ list_url }}');
-
-			/* * * CONFIGURATION VARIABLES * * */
-			var disqus_shortname = 'withaliasing';
-
-			/* * * DON'T EDIT BELOW THIS LINE * * */
-			(function () {
-				console.log('holas');
-				var s = document.createElement('script'); s.async = true;
-				s.type = 'text/javascript';
-				s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-				(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-			}());
 		});
 	</script>
 {% endblock %}
