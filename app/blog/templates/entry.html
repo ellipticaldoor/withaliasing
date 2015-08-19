@@ -6,6 +6,14 @@
 		{% block entry %}
 			{{ block.super }}
 		{% endblock %}
+
+		<div class="card">
+			<div class="card_content">
+				<div id="disqus_thread"></div>
+				<script type="text/javascript">var disqus_shortname='withaliasing';(function(){var a=document.createElement('script');a.type='text/javascript';a.async=true;a.src='//'+disqus_shortname+'.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(a)})();</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
 	</section>
 {% endblock %}
 
