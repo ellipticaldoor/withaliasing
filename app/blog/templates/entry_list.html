@@ -24,6 +24,8 @@
 							<li><a href="{{ object.get_category_url }}"><h5>{{ object.category_id }}</h5></a></li>
 							<li><h5>/</h5></li>
 							<li class="card_date"><h5>{{ object.created |date:"d/m/Y H:i" }}</h5></li>
+							<li><h5>/</h5></li>
+							<li><a href="{{ object.get_absolute_url }}#disqus_thread"><h5>comments</h5></a></li>
 							{% if user.is_authenticated %}
 								<li><h5>/</h5></li>
 								<li class="card_date"><a href="{{ object.get_edit_url }}"><h5>edit</h5></a></li>
@@ -50,6 +52,18 @@
 
 			// Infinite scrolling initialization
 			infiniteScrolling.init('{{ list_url }}');
+
+			/* * * CONFIGURATION VARIABLES * * */
+			var disqus_shortname = 'withaliasing';
+
+			/* * * DON'T EDIT BELOW THIS LINE * * */
+			(function () {
+				console.log('holas');
+				var s = document.createElement('script'); s.async = true;
+				s.type = 'text/javascript';
+				s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+				(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+			}());
 		});
 	</script>
 {% endblock %}
