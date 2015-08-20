@@ -49,12 +49,12 @@ strong { font-weight: bold; }
 a
 {
 	text-decoration: none;
-	color: #f4449e;
+	color: #4446f4;
 }
 
 a:hover { text-decoration: underline; }
 
-a:visited { color: #9744f4; }
+a:visited { color: #b144f4; }
 
 p { margin: .9em .3em; }
 
@@ -373,7 +373,7 @@ __________________________________________________________________________ */
 
 .info_card h1 { color: #867a7c !important; }
 
-.card_title { margin-bottom: .5em; }
+.card_title { margin-bottom: .5em; font-size: 180%; }
 
 .card_full_title {font-size: 2.5em;}
 
